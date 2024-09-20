@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário com Função dd()</title>
+</head>
+<body>
+
+    <h1>Testando Função dd()</h1>
+
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age"><br><br>
+
+        <label for="comments">Comments:</label><br>
+        <textarea id="comments" name="comments"></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <h2>Formatted Output:</h2>
+    <pre id="output"></pre>
+
+    <!-- Carrega o arquivo jsdd.v1.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>     
+    <script src="js/jsdd.v1.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#userForm').on('submit', function(event) {
+                event.preventDefault(); // Evita o comportamento padrão de recarregar a página
+                
+                // Captura os dados do formulário
+                const formData = $(this).serializeArray(); // Captura os dados do formulário como um array serializado
+                const data = {};
+                
+                // Converte o array serializado em um objeto
+                $.each(formData, function() {
+                    data[this.name] = this.value;
+                });
+
+                // Exibe os dados formatados usando a função 'dd'
+                const formattedData = dd(data);
+                $('#output').text(formattedData); // Exibe no div de output
+
+                // Envia os dados para a API usando jQuery AJAX
+                $.ajax({
+                    url: 'https://api.exemplo.com/submit',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function(response) {
+                        console.log('Success:', response);
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

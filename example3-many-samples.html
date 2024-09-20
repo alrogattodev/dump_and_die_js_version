@@ -1,0 +1,90 @@
+<script src="js/jsdd.v1.js"></script>
+<!-- Simple Object-->
+<script>
+    const simpleObject = {
+        name: "John",
+        age: 30,
+        profession: "Pirate"
+    };
+    console.log(dd(simpleObject));
+</script>
+
+<!-- Nested Object-->
+<script>
+    const nestedObject = {
+        person: {
+            name: "Alice",
+            details: {
+                age: 25,
+                profession: "Designer"
+            }
+        },
+        company: "ACME"
+    };
+
+    console.log(dd(nestedObject));
+</script>
+
+<!-- Array -->
+<script>
+    const simpleArray = ["apple", "banana", "cherry"];
+
+    console.log(dd(simpleArray));
+</script>
+
+<!-- Object Array-->
+<script>
+    const arrayOfObjects = [
+        { name: "Alice", age: 30 },
+        { name: "Bob", age: 25 },
+        { name: "Charlie", age: 35 }
+    ];
+
+    console.log(dd(arrayOfObjects));
+</script>
+
+<!-- JSON Test-->
+<script>
+    const jsonString = '{"person": {"name": "John", "age": 30}, "status": "active"}';
+    const jsonObject = JSON.parse(jsonString);
+
+    console.log(dd(jsonObject));
+</script>
+
+<!-- Nested Array -->
+<script>
+    const nestedArray = [
+        ["apple", "banana"],
+        ["carrot", "tomato"],
+        "grape"
+    ];
+
+    console.log(dd(nestedArray));
+</script>
+
+<!-- Mixed Structure - Object + Array -->
+<script>
+const mixedStructure = {
+    name: "John",
+    fruits: ["apple", "banana", "grape"],
+    details: {
+        age: 30,
+        hobbies: ["coding", "running"]
+    }
+};
+
+console.log(dd(mixedStructure));
+</script>
+
+<!-- Empty Object -->
+<script>
+    const emptyObject = {};
+
+    console.log(dd(emptyObject));
+</script>
+
+<!-- Null and Undefined -->
+<script>
+    console.log(dd(null));
+    console.log(dd(undefined));
+</script>
